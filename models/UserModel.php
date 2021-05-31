@@ -7,12 +7,16 @@ class UserModel
     public $name;
     public $tocken;
     public $create_at;
+    public $email;
+    public $password;
 
-    public function __construct($name)
+    public function __construct($name, $email, $password)
     {
         $this->tocken = generateRandomString(8);
         $this->create_at = date("Y-m-d h:i:sa");
         $this->name = $name;
+        $this->email = $email;
+        $this->password = $password;
     }
 }
 

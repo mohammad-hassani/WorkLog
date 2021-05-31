@@ -10,6 +10,7 @@ $router->define([
     'user/del-user'=>'controllers/user.php',
     'user/show-user'=>'controllers/user.php',
     'user/add-user'=>'controllers/user.php',
+    'user/login'=>'controllers/user.php',
 
     'task'=>'controllers/task.php',
     'task/del-task'=>'controllers/task.php',
