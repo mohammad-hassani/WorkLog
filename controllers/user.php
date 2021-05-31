@@ -15,13 +15,19 @@ switch ($action[2]) {
         break;
     case 'add-user':
         $name = $_GET['name'];
-        $result = $app['database']->insertUser($name);
+        $email = $_GET['email'];
+        $password = $_GET['password'];
+        $result = $app['database']->insertUser($name, $email, $password);
         echo $result;
         break;
     case 'show-user':
         $users = $app['database']->selectAll('tableuser');
         echo json_encode($users);
         break;
-
+    case 'login':
+        $email = $_GET['email'];
+        $password = $_GET['password'];
+        $result = $app['database']->login($email, $password);
+        echo json_encode($result);
 }
 

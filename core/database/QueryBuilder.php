@@ -30,16 +30,18 @@ class QueryBuilder
         return $statment->fetchAll(PDO::FETCH_CLASS);
     }
 
-    public function insertUser($name)
+    public function insertUser($name, $email, $password)
     {
-        $user = new UserModel($name);
+        $user = new UserModel($name, $email, $password);
 
-        $sql = 'INSERT INTO tableuser(name,tocken,create_at) VALUES(:name,:tocken,:create_at)';
+        $sql = 'INSERT INTO tableuser(name,tocken,create_at,email,password) VALUES(:name,:tocken,:create_at,:email,:password)';
         $statement = $this->pdo->prepare($sql);
         $statement->execute([
             ':name' => $user->name,
             ':tocken' => $user->tocken,
-            ':create_at' => $user->create_at
+            ':create_at' => $user->create_at,
+            ':email' => $user->email,
+            ':password' => $user->password,
         ]);
         return $this->pdo->lastInsertId();
     }
@@ -70,5 +72,12 @@ class QueryBuilder
         $stmt->execute();
 //        return $stmt->rowCount();
         return true;
+    }
+
+    function login($email, $password)
+    {
+        $statment = $this->pdo->prepare("select id from tableuser where tableuser.email ='{$email}' AND tableuser.password='{$password}' ");
+        $statment->execute();
+        return $statment->fetchAll(PDO::FETCH_CLASS);
     }
 }
