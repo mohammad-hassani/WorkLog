@@ -34,7 +34,7 @@ class QueryBuilder
     {
         $user = new UserModel($name, $email, $password);
 
-        $sql = 'INSERT INTO tableuser(name,tocken,create_at,email,password) VALUES(:name,:tocken,:create_at,:email,:password)';
+        $sql = "INSERT INTO tableuser(name,tocken,create_at,email,password) VALUES(:name,:tocken,:create_at,:email,:password)";
         $statement = $this->pdo->prepare($sql);
         $statement->execute([
             ':name' => $user->name,
@@ -65,13 +65,16 @@ class QueryBuilder
 
     public function delete($table, $id)
     {
-        $sql = 'DELETE FROM {$table} '
-            . 'WHERE id = :id';
+        $sql = "DELETE FROM {$table} "
+            . "WHERE id = :id";
         $stmt = $this->pdo->prepare($sql);
         $stmt->bindValue(':id', $id);
-        $stmt->execute();
-//        return $stmt->rowCount();
-        return true;
+        if($stmt->execute() == true){
+            return true;
+        } 
+        print_r($stmt->errorInfo());
+        return false;
+
     }
 
     function login($email, $password)
