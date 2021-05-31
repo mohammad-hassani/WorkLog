@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
-import contacts from './contactReducer';
+import tasks from './taskReducer';
 
 export default combineReducers({
-    contacts: contacts
+    tasks: tasks
 });

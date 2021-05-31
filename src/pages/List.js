@@ -1,7 +1,7 @@
-import {Link} from "react-router-dom";
+// import {Link} from "react-router-dom";
 import React, {Component} from "react";
 import { connect } from 'react-redux';
-import * as contactAction from '../actions/contactAction';
+import * as taskAction from '../actions/taskAction';
 // import Add from './Add';
 
 class List extends Component {
@@ -9,7 +9,7 @@ class List extends Component {
         super(props);
 
         this.state = {
-            name: '',
+            endTime: '',
             startTime: ''
         }
     }
@@ -25,7 +25,7 @@ class List extends Component {
                     </li>
                 </div>
                 <div className="col-md-2">
-                    <button onClick={(e) => this.deleteContact(e, index)} className="btn btn-danger border hover:bg-red-600 hover:text-white rounded-lg px-2 py-1 border-red-500 m-1">
+                    <button onClick={(e) => this.deleteTask(e, index)} className="btn btn-danger border hover:bg-red-600 hover:text-white rounded-lg px-2 py-1 border-red-500 m-1">
                         Remove
                     </button>
                 </div>
@@ -33,18 +33,18 @@ class List extends Component {
         )
     }
 
-    deleteContact(e, index){
+    deleteTask(e, index){
         e.preventDefault();
-        this.props.deleteContact(index);
+        this.props.deleteTask(index);
     }
     render() {
         return (
             <div className="App">
                 <p className={"text-center text-4xl whitespace-nowrap w-min mx-auto mt-12"}>Work Logs</p>
                 <p className={"w-min whitespace-nowrap my-4 mx-auto"}>your logs will be show here!</p>
-                <hr className={"w-1/3"}/>
+                <hr className={"w-1/3 mx-auto my-3"}/>
                 { <ul className="list-group">
-                    {this.props.contacts.map((contact, i) => this.listView(contact, i))}
+                    {this.props.tasks.map((task, i) => this.listView(task, i))}
                 </ul> }
             </div>
         );
@@ -53,14 +53,14 @@ class List extends Component {
 
 const mapStateToProps = (state, ownProps) => {
     return {
-        contacts: state.contacts
+        tasks: state.tasks
     }
 };
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        createContact: contact => dispatch(contactAction.createContact(contact)),
-        deleteContact: index =>dispatch(contactAction.deleteContact(index))
+        createTask: task => dispatch(taskAction.createTask(task)),
+        deleteTask: index =>dispatch(taskAction.deleteTask(index))
     }
 };
 

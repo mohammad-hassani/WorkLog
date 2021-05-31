@@ -1,3 +1,3 @@
-export const GET_ALL_CONTACTS = 'GET_ALL_CONTACTS';
-export const CREATE_NEW_CONTACT = 'CREATE_NEW_CONTACT';
-export const REMOVE_CONTACT = 'REMOVE_CONTACT';
+export const GET_ALL_TASKS = 'GET_ALL_TASK';
+export const CREATE_NEW_TASK = 'CREATE_NEW_TASK';
+export const REMOVE_TASK = 'REMOVE_TASK';
