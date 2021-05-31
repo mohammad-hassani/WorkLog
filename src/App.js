@@ -1,7 +1,6 @@
 import './App.css';
 import Header from "./components/header"
 import Main from "./components/main";
-import {Link} from "react-router-dom";
 
 function App() {
   return (
