@@ -13,7 +13,7 @@ class UserModel
     public function __construct($name, $email, $password)
     {
         $this->tocken = generateRandomString(8);
-        $this->create_at = date("Y-m-d h:i:sa");
+        $this->create_at = date("Y-m-d h:i:s");
         $this->name = $name;
         $this->email = $email;
         $this->password = $password;

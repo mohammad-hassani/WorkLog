@@ -16,6 +16,6 @@ class TaskModel
         $this->start_time = $start_time;
         $this->end_time = $end_time;
         $this->date = $date;
-        $this->create_at = date("Y-m-d h:i:sa");
+        $this->create_at = date("Y-m-d h:i:s");
     }
 }

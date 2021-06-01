@@ -16,6 +16,7 @@ $router->define([
     'task/del-task'=>'controllers/task.php',
     'task/show-task'=>'controllers/task.php',
     'task/add-task'=>'controllers/task.php',
+    'task/show-user-task'=>'controllers/task.php',
 
 ]);
 

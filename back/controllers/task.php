@@ -24,6 +24,9 @@ switch ($action[2]) {
         $users = $app['database']->selectAll('tabletask');
         echo json_encode($users);
         break;
-
+    case 'show-user-task':
+        $userid = $_GET['userid'];
+        $tasks = $app['database']->selectTasks($userid);
+        echo json_encode($tasks);
 }
 
