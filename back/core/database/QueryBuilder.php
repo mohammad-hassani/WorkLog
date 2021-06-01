@@ -10,9 +10,9 @@
 //        $this->plumber = $plumber;
 //    }
 //}
+header('Access-Control-Allow-Origin: http://localhost:3000');
 require 'models/UserModel.php';
 require 'models/TaskModel.php';
-
 class QueryBuilder
 {
     public $pdo;

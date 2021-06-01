@@ -2,6 +2,7 @@
 
 //
 
+header('Access-Control-Allow-Origin: http://localhost:3000');
 
 $url = parse_url($_SERVER['REQUEST_URI']);
 $action = explode("/", $url['path']);
