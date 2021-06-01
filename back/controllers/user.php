@@ -25,8 +25,13 @@ switch ($action[2]) {
         echo json_encode($users);
         break;
     case 'login':
-        $email = $_GET['email'];
-        $password = $_GET['password'];
+//        $request = getInstance()->request();
+//        $data = json_decode($_SERVER['REQUEST_URI']->getBody());
+        $data = json_decode(file_get_contents('php://input'), true);
+        $email = $data["email"];
+        $password = $data["password"];
+//        $email = $_GET['email'];
+//        $password = $_GET['password'];
         $result = $app['database']->login($email, $password);
         echo json_encode($result);
 }
