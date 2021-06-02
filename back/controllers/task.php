@@ -14,10 +14,11 @@ switch ($action[2]) {
         echo json_encode($result);
         break;
     case 'add-task':
-        $userid = $_GET['userid'];
-        $start_time = $_GET['start_time'];
-        $end_time = $_GET['end_time'];
-        $date = $_GET['date'];
+        $dataTask = json_decode(file_get_contents('php://input'), true);
+        $userid = $dataTask['userid'];
+        $start_time = $dataTask['start_time'];
+        $end_time = $dataTask['end_time'];
+        $date = $dataTask['date'];
         $result = $app['database']->insertTask($userid, $start_time, $end_time, $date);
         echo $result;
         break;
