@@ -12,4 +12,10 @@ export const deleteTask = (id) => {
         type: actionTypes.REMOVE_TASK,
         id: id
     }
+};
+export const getAllTask = (id) => {
+    return {
+        type: actionTypes.GET_ALL_TASKS,
+        id: id
+    }
 }

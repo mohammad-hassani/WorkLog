@@ -15,9 +15,10 @@ switch ($action[2]) {
         echo json_encode($result);
         break;
     case 'add-user':
-        $name = $_GET['name'];
-        $email = $_GET['email'];
-        $password = $_GET['password'];
+        $dataAdd = json_decode(file_get_contents('php://input'), true);
+        $name = $dataAdd['name'];
+        $email = $dataAdd['email'];
+        $password = $dataAdd['password'];
         $result = $app['database']->insertUser($name, $email, $password);
         echo $result;
         break;

@@ -26,7 +26,8 @@ switch ($action[2]) {
         echo json_encode($users);
         break;
     case 'show-user-task':
-        $userid = $_GET['userid'];
+        $data = json_decode(file_get_contents('php://input'), true);
+        $userid = $data['userid'];
         $tasks = $app['database']->selectTasks($userid);
         echo json_encode($tasks);
 }
